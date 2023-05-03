@@ -1,7 +1,9 @@
+package TicTacToeGame;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import java.awt.event.MouseListener;
 
 
 public class GameMain extends JPanel implements MouseListener{
@@ -40,7 +42,7 @@ public class GameMain extends JPanel implements MouseListener{
 	public GameMain() {   
 		
 		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
-	    
+	    addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
 		statusBar = new JLabel("         ");       
@@ -57,10 +59,10 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		
 		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
-
+		board = new Board();
 		
 		//TODO: call the method to initialise the game board
-
+		initGame();
 	}
 	
 	public static void main(String[] args) {
@@ -71,11 +73,11 @@ public class GameMain extends JPanel implements MouseListener{
 				JFrame frame = new JFrame(TITLE);
 				
 				//TODO: create the new GameMain panel and add it to the frame
-						
-				
+				GameMain panel = new GameMain();
+				frame.add(panel);
 				
 				//TODO: set the default close operation of the frame to exit_on_close
-		            
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
